@@ -1,0 +1,111 @@
+﻿@model List<Festofilas.Models.MainViewModels.FestivalThumbModel>
+@{
+    ViewData["Title"] = "Festivaliai";
+}
+
+<style>
+    .tile {
+        height: 200px;
+        width: 300px;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        max-width: 100%;
+        max-height: 100%;
+        text-align: center;
+        vertical-align: middle;
+        background-size: 200px 200px;
+    }
+
+    .caption {
+        background-color: rgba(50,50,50,0.4);
+        overflow: hidden;
+        color: #fff;
+        font-weight: bold;
+        margin: 150px 0px 0px 0px;
+        height: 100%;
+        width: 100%;
+    }
+
+
+
+        .caption:hover {
+            transition: margin .5s;
+            margin: 0px 0px 20px 0px;
+            background-color: rgba(50,50,50,0.4);
+            cursor: pointer;
+        }
+
+
+
+    #description {
+        overflow: hidden;
+        margin: 25px 0px 0px 0px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <br />
+            <img src="~/images/sidebar.png" onmouseover="this.style.cursor = 'pointer';" onclick="window.location = 'https://www.facebook.com/droneracinglietuva/';"
+                 alt="ads" class="img-responsive" style="border:2px solid black;" />
+        </div>
+        <!--/span-->
+        <div class="col-md-8">
+            <h1> Festivaliai </h1>
+            <br />
+
+            @for (int i = 0; i < Model.Count(); i += 4)
+            {
+                <div class="row">
+
+                    @for (int j = 0; j < 4; j++)
+                    {
+                        if (j + i == Model.Count())
+                        {
+                            break;
+                        }
+                        <div class="col-md-3">
+                            <div class="tile img-thumbnail" style="background: url(@Model[i+j].Image); background-size: 100%; max-height:100%; max-width: 100%; background-repeat: no-repeat; background-position: center;">
+
+                                <div class="caption" onclick="window.location = '@Url.Action("Festival", "Home", new { id = Model[i+j].Id})';">
+
+                                    <p style="font-size: 15pt; text-shadow: -1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;">@Model[i + j].Name</p>
+                                    <p id="description">@Model[i + j].Genre</p>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <p style="font-weight: bold; font-size: 10pt"> @Model[i + j].Date.ToString("D")</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <br />
+            }
+
+        </div>
+        <!--/span-->
+        <div class="col-md-2">
+            <div class="navbar-right">
+                <br />
+
+
+                <img src="~/images/sidebar.png" onmouseover="this.style.cursor = 'pointer';" onclick="window.location = 'https://www.facebook.com/droneracinglietuva/';"
+                     alt="ads" class="img-responsive" style="border:2px solid black;" />
+                <br />
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div style="margin: auto; display: block;" class="btn btn-default" onclick="window.location = ('@Url.Action("AddFestival", "Home")')">Sukurti festivalį</div>
+                }
+            </div>
+
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
+
+</div>

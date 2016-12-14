@@ -1,0 +1,16 @@
+﻿@using Festofilas.Data.Model
+@using Festofilas.Models.MainViewModels
+@model System.Collections.Generic.List<Festofilas.Models.MainViewModels.CommentViewModel>
+
+<h2>Komentarai</h2>
+
+    <hr/>
+    @foreach (var comment in Model)
+    {
+            <div class="h5">
+                @comment.Date.ToString("d")
+                @comment.UserName:
+            </div>
+            <div class="h4" style="text-indent: 2em;">@comment.Text</div>
+        <hr/>
+    }
