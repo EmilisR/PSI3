@@ -289,7 +289,7 @@ Pagrindinė klasė, leidžianti atlikti vartotojo užduotis, yra \textit{Vartoto
 
 Žemiau pateikta veiklos diagrama, kuri rodo ką vartotojas gali daryti tinklalapyje pasirinkęs “Festivaliai” skiltį. Vartotojas gali tiesiog ieškoti straipsnio eidamas per visą skiltį arba jis gali tikslingai pasirinkti rikiavimo arba filtravimo būdą, arba žinodamas festivalio pavadinimą - jį gali įvesti į paieškos laukelį. Iš atrinktų festivalių vartotojas gali toliau rinktis festivalį. O tada gali išsirinkti vieną festivalį ir arba jis randa informaciją, kurios ir ieškojo, arba, jeigu vartotojas yra prisijungęs, jis gali įvertinti festivalį, diskutuoti su žmonėmis arba užsiprenumeruoti festivalį. Jeigu vartotojas užsiprenumeruoja festivalį, tada likus trims dienoms iki festivalio jam yra pranešama, kokia bus meteorologinė situacija festivalio metu.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
     \includegraphics[scale=0.5]{img/Pav/VartotojasFestivalis}
 	\label{uml:22}
@@ -298,7 +298,7 @@ Pagrindinė klasė, leidžianti atlikti vartotojo užduotis, yra \textit{Vartoto
 
 Beje, vartotojas gali pasirinkti skiltį “Naujienos”. Tada jis gali ieškoti straipsnio, jeigu jis randa straipsnį, kurį nori perskaityti - spaudžia “Skaityti daugiau”. Tada gali perskaityti straipsnį ir jeigu nori bei yra prisijungęs vartotojas gali komentuoti. Arba gali eiti toliau ieškoti straipsnio.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
     \includegraphics[scale=0.5]{img/Pav/VartotojasStraipsnis}
 	\label{uml:23}
@@ -315,7 +315,7 @@ Vartotojas atsidaręs tinklalapį, jei turi paskyrą gali prie jos prisijungti. 
 \end{itemize}
  Visais atvejais vartotojas gali grįžti į “Mano meniu” ir tęsti veiklą.
  
-\begin{figure}
+\begin{figure}[H]
 	\centering
     \includegraphics[scale=0.5]{img/Pav/VartotojasPrisijungesFunk}
 	\label{uml:24}
@@ -324,7 +324,7 @@ Vartotojas atsidaręs tinklalapį, jei turi paskyrą gali prie jos prisijungti. 
 
 Festivalio organizatorius gali pasidalinti savo festivaliu. Jis tai daro pirmiausiai atsidarydamas tinklalapį bei pasirinkdamas skiltį “Festivaliai”. Tada paspaudžia ant mygtuko “Pranešti apie festivalį”. Tada atsidaro naujas puslapis su festivalio formą, kurią užpildęs festivalio organizatorius, ją išsiunčia. Jeigu jis gauna pranešimą, kad reikia patikslinti informaciją turi viską kartoti iš naujo, o jeigu ne, tada festivalio skelbimas išsiųstas.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
     \includegraphics[scale=0.5]{img/Pav/FestOrgFestivalis}
 	\label{uml:25}
@@ -339,7 +339,7 @@ Administratorius prisijungęs prie savo admin panel gali daryti keletą veiksmų
 Padaręs bet kokį veiksmą administratorius gali toliau tęsti darbą su festivaliais.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
     \includegraphics[scale=0.5]{img/Pav/AdminFest}
 	\label{uml:26}
@@ -354,7 +354,7 @@ Administratorius prisijungęs prie savo admin panel gali daryti keletą veiksmų
 \end{itemize}
 Visais atvejais administratorius atlikęs veiksmą norėdamas pereiti prie kitos veiklos tai gali padaryti ir tęsti darbą.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
     \includegraphics[scale=0.5]{img/Pav/AdminFunkOthers}
 	\label{uml:27}
@@ -369,7 +369,7 @@ Visais atvejais administratorius atlikęs veiksmą norėdamas pereiti prie kitos
 \end{itemize}
 Visais atvejais žurnalistas gali toliau tęsti savo darbą.
 
-\begin{figure}
+\begin{figure}][H]
 	\centering
     \includegraphics[scale=0.5]{img/Pav/ZurnalistasStraipsniai}
 	\label{uml:28}
@@ -378,7 +378,7 @@ Visais atvejais žurnalistas gali toliau tęsti savo darbą.
 
 Tinklalapis gali būti: kuriamas, veikiantis, neveikiantis, taisomas, uždarytas. Jeigu tinklalapis neveikia dėl serverio talpintojų problemų arba dėl sistemos klaidų jis įgauna būseną neveikiantis. Pradėjus taisyti neveikiantis tinklalapis tampa taisomu. Pavykus sutaisyti tinklalapis grįžta į normalią būseną - veikiantis. Dėl finansų stygiaus arba populiarumo stygiaus tinklalapis gali tapti uždarytu.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
     \includegraphics[scale=0.5]{img/Pav/TinklalapioBusena}
 	\label{uml:29}
@@ -387,7 +387,7 @@ Tinklalapis gali būti: kuriamas, veikiantis, neveikiantis, taisomas, uždarytas
 
 Vartotojas gali būti: lankytojas, vartotojas, ieškantis, turintis informaciją, nepatenkintas, radęs informaciją, norintis naudotis spec. funkcijas, neprisijungęs, neturintis paskyros, nenorintis kurtis, kuriantis paskyrą, turintis paskyrą, prisijungęs, naudojantis spec. funkcijas, patenkintas. Pačioje pradžioje asmuo atsidaręs tinklalapį yra tik lankytojas, kai jis naudojasi juo tampa vartotoju. Jeigu vartotojas ieško informacijos jis tampa ieškantis. Kai turi informaciją (tampa turinčiu informaciją), jeigu jis yra nepatenkintas informacija, jis tampa nepatenkintas ir išeina iš tinklalapio. Tačiau jei vartotojas randa informaciją, jis tampa radęs informaciją ir jeigu ieško daugiau informacijos grįžta atgal į vartotoją. Kai randa visą informaciją, kurios norėjo tampa patenkintu. Tačiau jeigu vartotojas nori ne vien ieškoti informacijos tada jis tampa norintis naudotis spec. Funkcijas. Jeigu jis nėra prisijungęs prie savo paskyros (yra neprisijungęs) jis gali būti dviejų būsenų arba neturintis paskyros, tada jeigu nori susikurti paskyrą jis tampa kuriantis paskyrą ir po to būna prisijungęs, arba jeigu nenori kurtis, jis tiesiog išeina iš tinklalapio. Tačiau neprisijungęs vartotojas gali ir turėti paskyrą, tada jis gali prisijungti prie jos ir tapti prisijungusiu. Taip prisijungę asmenys gali naudotis spec. funkcijomis ir taip tampa patenkinti.
 
-\begin{figure}
+\begin{figure} [H]
 	\centering
     \includegraphics[scale=0.45]{img/Pav/VartotojoBusena}
 	\label{uml:30}
