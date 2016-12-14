@@ -1,0 +1,31 @@
+﻿@using Festofilas.Models.MainViewModels
+@model ContactViewModel
+@{
+    ViewData["Title"] = "Statistika";
+}
+<h1>Iš viso užsiregistravusių vartotojų: @Model.AmountOfUsers</h1>
+<h1>Vartotoju komentarai</h1>
+@foreach (var user in Model.Dict)
+{
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <h2>@user.Key</h2>
+        </div>
+        <div class="col-md-8">
+            <br/>
+            @foreach (var comment in user.Value)
+            {
+                <div class="col-md-10">
+                    <a href="@comment.ArticleLink">Nuoroda į komentarą</a>
+                    <p>@comment.Comments.Text</p>
+                    <hr style="border: black solid 2px"/>
+                </div>
+                <div class="col-md-2">
+                    <button onclick="window.location = '@Url.Action("DeleteComment", "Home", new {comment = comment.Comments.Text, userName = user.Key})';" class="btn btn-default">Delete</button>
+                </div>
+            }
+        </div>
+    </div>
+
+}

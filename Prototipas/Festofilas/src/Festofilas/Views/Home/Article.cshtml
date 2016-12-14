@@ -1,0 +1,32 @@
+﻿@using System.Threading.Tasks
+@using Festofilas.Models.MainViewModels
+@model Festofilas.Models.MainViewModels.ArticleViewModel
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+<h2>@Model.Name</h2>
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-responsive"
+             src='@Model.DisplayImage' style="max-width: 350px; max-height: 350px" />
+    </div>
+    <div class="col-md-8">
+        <div class="h4">Rašytojas: @Model.WriterUserName</div>
+        <div class="h4">Data: @Model.SubmissionTime.ToString("D")</div>
+        <p>@Model.Summary</p>
+        <p>@Model.Text</p>
+    </div>
+</div>
+
+@await Component.InvokeAsync("Comment", new { articleId = Model.Id, isFestival = false, from = 0, to = 5 })
+
+@if (User.Identity.IsAuthenticated)
+{
+    @await Component.InvokeAsync("CommentPost", new { comment = new CommentPostModel() { ArticleId = Model.Id, IsFestival = false } })
+}
+
+@await Component.InvokeAsync("FestivalThumbnails", new {articleId = Model.Id})
+<div>
+    <a asp-action="Index">Atgal</a>
+</div>

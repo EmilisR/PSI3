@@ -1,0 +1,16 @@
+﻿@model System.Collections.Generic.List<Festofilas.Models.MainViewModels.FestivalThumbModel>
+<h3>Susije festivaliai</h3>
+<div class="row">
+    @foreach (var thumb in Model)
+    {
+        <div onmouseover="this.style.cursor = 'pointer';" onclick="window.location = '@Url.Action("Festival", "Home", new {id = thumb.Id})'" class="col-md-3" >
+            <div class="col-md-12" style="border: 2px solid black; width: 200px; height: 200px">
+
+                <img class="img-responsive" src="@thumb.Image" />
+                <h4 style="text-align: center">@thumb.Name</h4>
+            </div>
+        </div>
+    }
+
+
+</div>
