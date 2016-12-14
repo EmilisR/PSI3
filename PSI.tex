@@ -65,6 +65,23 @@ Todėl atsižvelgę į tai nusprendėme, kad geriausia būtų sukurti tinklalap�
 
 Šio, trečio laboratorinio darbo tikslas yra apibrežti tinklalio architektūra naudojant 4+1 architekturos pjūvių modelį, aprašant užduotis ir jų vykdymo scenarijus, strukturinį ir dinaminį tinkalapio modelius, tinklalapio komponentus ir komponentu išskirtyma tinkle, bei sukurti tinklalapio prototipą.  
 
+\section{Užduotys ir jų vykdymo scenarijai}
+Visame tinklalapyje yra keturi pagrindiniai agentai: vartotojas, festivalio organizatorius, administratorius ir žurnalistas. Šiame skyriuje išnagrinėsime visas šių agentų užduotis. Pirmiausia jas pavaizduosime atvejų diagrama, o vėliau visas užduotis parodysime sekų diagrama. 
+
+Pirmasis agentas, kurį išnagrinėjome yra vartotojas, jis gali atlikti žemiau pateiktas užduotis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/Vartotojas}
+    \label{img:uml1}
+	\caption{Vartotojo užduotys}
+\end{figure}
+
+Vartotojas gali prisiregistruoti prie mūsų tinklalapio.
+ Kad tai padarytų jam reikia atsidarius tinklalapį jo viršuje paspausti registracijos mygtuką, tada yra pateikiama registracijos formą,
+ kurią jis privalo užpildyti. Ji yra išsiunčiama registracijos kontrolei, kuri išsaugo naują vartotoją duomenų bazėje. Ji atsako ar yra jau toks vartotojo vardas. 
+ Jeigu toks vardas neegzistuoja, yra atidaroma vartotojo paskyrą, o jei toks vartotojo vardas egzistuoja tinklalapis vartotojui praneša,
+ kad yra suvesti negalimi registracijos duomenys.
 
 \section{Struktūrinis programų sistemos modelis}
 Šiame skyriuje nagrinėjamas funkcinių reikalavimų įgyvendinimas, vaizduojamos informacinę festivalių sistemą sudarančios klasės ir jų sąryšiai.
