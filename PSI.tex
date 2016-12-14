@@ -289,6 +289,113 @@ Pagrindinė klasė, leidžianti atlikti vartotojo užduotis, yra \textit{Vartoto
 
 Žemiau pateikta veiklos diagrama, kuri rodo ką vartotojas gali daryti tinklalapyje pasirinkęs “Festivaliai” skiltį. Vartotojas gali tiesiog ieškoti straipsnio eidamas per visą skiltį arba jis gali tikslingai pasirinkti rikiavimo arba filtravimo būdą, arba žinodamas festivalio pavadinimą - jį gali įvesti į paieškos laukelį. Iš atrinktų festivalių vartotojas gali toliau rinktis festivalį. O tada gali išsirinkti vieną festivalį ir arba jis randa informaciją, kurios ir ieškojo, arba, jeigu vartotojas yra prisijungęs, jis gali įvertinti festivalį, diskutuoti su žmonėmis arba užsiprenumeruoti festivalį. Jeigu vartotojas užsiprenumeruoja festivalį, tada likus trims dienoms iki festivalio jam yra pranešama, kokia bus meteorologinė situacija festivalio metu.
 
+<<<<<<< HEAD
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/VartotojasFestivalis}
+	\label{uml:22}
+	\caption{Vartotojo veiksmai "Festivaliai" skiltyje}
+\end{figure}
+
+Beje, vartotojas gali pasirinkti skiltį “Naujienos”. Tada jis gali ieškoti straipsnio, jeigu jis randa straipsnį, kurį nori perskaityti - spaudžia “Skaityti daugiau”. Tada gali perskaityti straipsnį ir jeigu nori bei yra prisijungęs vartotojas gali komentuoti. Arba gali eiti toliau ieškoti straipsnio.
+
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/VartotojasStraipsnis}
+	\label{uml:23}
+	\caption{Vartotojo veiksmai "Naujienos" skiltyje}
+\end{figure}
+
+Vartotojas atsidaręs tinklalapį, jei turi paskyrą gali prie jos prisijungti. Tai padaro paspausdamas prisijungimo mygtuką ir įvesdamas prisijungimo duomenis ir taip prisijungia. Tačiau jei jis neturi savo paskyros vartotojas gali paspausti registracijos mygtuką ir tada gali pasirinkti naudoti įskiepius, jeigu nenori jis užpildo registracijos formą, o jeigu nori naudoja įskiepius. Ir taip susikuria paskyrą.
+	Prisijungęs ar susikūręs pasykrą vartotojas gali paspausti ant “Mano meniu” mygtuko ir tada gali rinktis ką nori daryti:
+\begin{itemize}
+\item Gali paspausti ant mygtuko “Mano kalendorius” ir tada pamato jo pasirinktus festivalius kalendoriuje. Jeigu jis nori gauti informacijos vartotojas paspaudžia ant festivalio ir atsiranda langas su festivalio informacija.
+\item Gali paspausti ant “Nauji pranešimai” mygtuko ir tada jeigu yra naujų pranešimų jie yra matomi, o jeigu jų nėra, tada būna parašyta, kad naujų pranešimų nėra. 
+\item Gali pasirinkti “Užsiprenumeruoti festivaliai” pasirinkties ir tada vartotojas mato sąrašą festivalių, kuriuos jis užsiprenumeravęs. Jeigu nori gali paspausti ant festivalio ir sužinoti daugiau informacijos apie jį.
+\item Gali paspausti ant “Nustatymai”. Tada vartotojas gali pakeisti savo paskyros duomenis (slapyvardis, slaptažodis, paskyros paveikslėlį) arba gali pakeisti “Domina” nustatymus.
+\end{itemize}
+ Visais atvejais vartotojas gali grįžti į “Mano meniu” ir tęsti veiklą.
+ 
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/VartotojasPrisijungesFunk}
+	\label{uml:24}
+	\caption{Vartotojo veiksmai prisijungus}
+\end{figure}
+
+Festivalio organizatorius gali pasidalinti savo festivaliu. Jis tai daro pirmiausiai atsidarydamas tinklalapį bei pasirinkdamas skiltį “Festivaliai”. Tada paspaudžia ant mygtuko “Pranešti apie festivalį”. Tada atsidaro naujas puslapis su festivalio formą, kurią užpildęs festivalio organizatorius, ją išsiunčia. Jeigu jis gauna pranešimą, kad reikia patikslinti informaciją turi viską kartoti iš naujo, o jeigu ne, tada festivalio skelbimas išsiųstas.
+
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/FestOrgFestivalis}
+	\label{uml:25}
+	\caption{Festivalio organizatorius pasidalina festivaliu}
+\end{figure}
+
+Administratorius prisijungęs prie savo admin panel gali daryti keletą veiksmų:
+\begin{itemize}
+\item Gali pasirinkti pridėti festivalį. Jis pagal festivalio organizatoriaus formą, turi užpildyti festivalio formą ir jeigu informacija teisinga festivalis pridėtas prie sistemos, o jeigu ne, tada išsiunčiamas pranešimas, kad reikia patikslinti informaciją.
+\item Gali pasirinkti festivalį ir atnaujinti jo informaciją. Administratorius pasirenka festivalį, pakeičia jo informaciją ir išsaugo atgal į duomenų bazę.
+\item Pasirenka ištrinti festivalį. Tada jis pasirenka kokį festivalį reikia ištrinti ir jį ištrina.
+Padaręs bet kokį veiksmą administratorius gali toliau tęsti darbą su festivaliais.
+\end{itemize}
+
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/AdminFest}
+	\label{uml:26}
+	\caption{Administratoriaus veiksmai admin panel su festivaliais}
+\end{figure}
+
+Administratorius prisijungęs prie savo admin panel gali daryti keletą veiksmų:
+\begin{itemize}
+\item Gali pasirinkti ištrinti komentarą. Tada turi pasirinkti ar nori matyti visus ar tik kitų vartotojų praneštus. Tada pasirenka komentarą, peržiūri jo turinį ir nusprendžia ar komentaras yra tinkamas, jeigu netinkamas, tada ištrina komentarą. Ir tada turi pasirinkti ar nori tęsti darbą su komentarais, jeigu taip tada grįžta atgal.
+\item Gali pasirinkti ištrinti vartotoją. Tada mato visų vartotojų sąrašą ir pasirenka vartotoją, atsidaro to vartotojo veiklos statistika naujame lange. Jeigu vartotojas nėra geras jis būna ištrinamas. Ir jei administratorius nori gali tęsti darbą su vartotojais.
+\item Gali pasirinkti peržiūrėti atsiliepimus. Administratorius peržiūri atsiliepimus, gali pasirinkti atsiliepimą ir jį perskaityti. Tada turi nuspręsti ar atsiliepimas yra tinkamas - jeigu taip, tada padaro pakeitimą pagal vartotojo atsiliepimą, o jeigu ne, tada ištrina atsiliepimą. Jeigu administratorius nori, gali tęsti darbą su atsiliepimais.
+\end{itemize}
+Visais atvejais administratorius atlikęs veiksmą norėdamas pereiti prie kitos veiklos tai gali padaryti ir tęsti darbą.
+
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/AdminFunkOthers}
+	\label{uml:27}
+	\caption{Kiti administratoriaus veiksmai admin panel}
+\end{figure}
+
+Žurnalistas gali prisijungti prie zurnalistas panel ir gali daryti tokius veiksmus:
+\begin{itemize}
+\item Gali pasirinkti įkelti naują straipsnį. Tada jis turi užpildyti straipsnio formą ir ją įkelti.
+\item Gali pasirinkti redaguoti straipnsį. Tada turi peržiūrėti straipsnių sąrašą ir išsirinkti straipsnį, ant jo paspausti ir tada gavęs jo informaciją gali ją redaguoti. Pabaigęs redagavimą turi išsaugoti.
+\item Gali pasirinkti ištrinti straipsnį. Peržvelgęs straipnsių sąrašą jis pasirenka straipsnį ir jį ištrina.
+\end{itemize}
+Visais atvejais žurnalistas gali toliau tęsti savo darbą.
+
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/ZurnalistasStraipsniai}
+	\label{uml:28}
+	\caption{Žurnalisto veiksmai}
+\end{figure}
+
+Tinklalapis gali būti: kuriamas, veikiantis, neveikiantis, taisomas, uždarytas. Jeigu tinklalapis neveikia dėl serverio talpintojų problemų arba dėl sistemos klaidų jis įgauna būseną neveikiantis. Pradėjus taisyti neveikiantis tinklalapis tampa taisomu. Pavykus sutaisyti tinklalapis grįžta į normalią būseną - veikiantis. Dėl finansų stygiaus arba populiarumo stygiaus tinklalapis gali tapti uždarytu.
+
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/TinklalapioBusena}
+	\label{uml:29}
+	\caption{Tinkalalio būsena}
+\end{figure}
+
+Vartotojas gali būti: lankytojas, vartotojas, ieškantis, turintis informaciją, nepatenkintas, radęs informaciją, norintis naudotis spec. funkcijas, neprisijungęs, neturintis paskyros, nenorintis kurtis, kuriantis paskyrą, turintis paskyrą, prisijungęs, naudojantis spec. funkcijas, patenkintas. Pačioje pradžioje asmuo atsidaręs tinklalapį yra tik lankytojas, kai jis naudojasi juo tampa vartotoju. Jeigu vartotojas ieško informacijos jis tampa ieškantis. Kai turi informaciją (tampa turinčiu informaciją), jeigu jis yra nepatenkintas informacija, jis tampa nepatenkintas ir išeina iš tinklalapio. Tačiau jei vartotojas randa informaciją, jis tampa radęs informaciją ir jeigu ieško daugiau informacijos grįžta atgal į vartotoją. Kai randa visą informaciją, kurios norėjo tampa patenkintu. Tačiau jeigu vartotojas nori ne vien ieškoti informacijos tada jis tampa norintis naudotis spec. Funkcijas. Jeigu jis nėra prisijungęs prie savo paskyros (yra neprisijungęs) jis gali būti dviejų būsenų arba neturintis paskyros, tada jeigu nori susikurti paskyrą jis tampa kuriantis paskyrą ir po to būna prisijungęs, arba jeigu nenori kurtis, jis tiesiog išeina iš tinklalapio. Tačiau neprisijungęs vartotojas gali ir turėti paskyrą, tada jis gali prisijungti prie jos ir tapti prisijungusiu. Taip prisijungę asmenys gali naudotis spec. funkcijomis ir taip tampa patenkinti.
+
+\begin{figure}
+	\centering
+    \includegraphics[scale=0.5]{img/Pav/VartotojoBusena}
+	\label{uml:30}
+	\caption{Vartotojo būsena}
+\end{figure}
+=======
+>>>>>>> origin/PSI
 
 
 \section{Komponentų išskirstymas tinkle}
