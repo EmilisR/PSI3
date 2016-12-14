@@ -90,7 +90,7 @@ Vartotojas gali prisijungti prie tinklalapio. Kad tai padaryti vartotojas turi t
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.45]{img/Pav/VartotojasPrisijungia}
+    \includegraphics[scale=0.45]{img/Pav/VartotojasPrisijungimas}
     \label{img:uml3}
 	\caption{Vartotojo prisijungimo seka}
 \end{figure}
@@ -182,7 +182,57 @@ Administratorius gali peržiūrėti visus publikuotų festivalių skelbimus. Tai
 	\caption{Administratorius veiksmai su festivaliais}
 \end{figure}	
 	
+Administratorius gali ištrinti vartotojus, kurie pastoviai nusižengia tinklalapio taisyklėms. Tai jis gali padaryti pasirinkdamas, kad jam parodytų vartotojų sąrašą. Admin panel prašo dauti informacijos DB vadovo, o šis ima informaciją iš DB ir ją siunčia atgal į admin panel. O admin panel pateikia sąrašą administratoriui. Jis gali pasirinkti vartotoją. Tada to vartotojo ID yra siunčiamas DB vadovui, kuris paima to vartotojo informaciją iš DB ir ją siunčia į admin panel. Tada admin panel atidaro naują langą su visa statistine informaciją apie vartotoją. Jeigu administratorius nusprendžia, kad vartotoją reikia ištrinti jis pasirenka tokia funkciją ir admin panel išsiunčia to vartotojo ID DB vadovui, kuris pašalina iš DB tą vartotoją ir visą informaciją su juo bei gražina, kad funkcija sėkmingai įvykdyta.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/AdminIstrintiVartotoja}
+    \label{img:uml13}
+	\caption{Administratorius ištrina vartotoją}
+\end{figure}	
 	
+Administratorius gali ištrinti netinkamą komentarą. Tai padaryti jis gali, kai pasirenka, kad jam admin panel rodytų visus komentarus bei gali pasirinkti pagal ką jam bus rodomi komentarai: nauji nuo paskutinio patikrinimo, nuo tam tikros datos ar tam tikro festivalio (straipsnio) ir t.t.. Tada admin panel prašo gauti informaciją DB vadovo, jis paima informaciją iš DB ir siunčia į admin panel, kuri sąrašą atvaizduoją administratoriui. Kai administratorius pasirenka komentarą, admin panel siunčia to komentaro ID DB vadovui ir šis iš DB ištrina tą komentarą bei praneša apie sėkmingą ištrinimą. Admin panel parodo pranešimą, kad komentaras ištrintas, administratoriui. 
+	Tačiau administratorius gali peržvelgti tik tuos komentarus, kuriuos pranešė kiti vartotojai. Jis pasirenka šia opciją ir admin panel prašo DB vadovo, kad duotų informacijos ir šis paima ją iš DB ir siunčia admin panel, kuri administratoriui juos parodo. Tada administratorius pasirenka netinkamus ir ištrina. Admin panel siunčia komentarų ID ir DB vadovas juos ištrina iš DB ir praneša apie sėkimingą funkcijos įvykdymą.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/AdminIstrintiKomentarus}
+    \label{img:uml14}
+	\caption{Administratorius ištrina komentarą}
+\end{figure}	
+	
+Administratorius gali peržiūrėti visus vartotojų atsiliepimus. Jis turi pasirinkti tokią opciją ir tada admin panel prašo DB vadovo suteikti tokią informaciją. Tada DB vadovas paima informaciją iš DB ir ją išsiunčia į admin panel, kuri šią informaciją atvaizduoja. Tada, administratorius gali ištrinti bereikšmius atsiliepimus iš sistemos. Jis turi pasirinkti atsiliepimą, tada to atsiliepimo ID yra išsiunčiamas DB vadovui, kuris ištrina atsiliepimą iš DB ir praneša apie sėkmingą to atlikimą. Ir tada admin panel apie tai praneša administratoriui.
+	
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/AdminAtsiliepimaiSvetaine}
+    \label{img:uml15}
+	\caption{Administratorius peržiūri atsiliepimus}
+\end{figure}
+	
+Paskutinis agentas mūsų tinklalapyje yra žurnalistas, kurio užduotis turi ir administratorius.
+
+Žurnalistas gali įkelti straipsnį į tinklalapį. Tai padaro pasirinkdamas įkelti straipsnį, tada zurnalistas panel pateikia straipsnio formą, kurią žurnalistas užpildęs deda į sistemą. Zurnalistas panel siunčia informaciją DB vadovui, kuris saugo informaciją į DB ir taip pat ima informaciją iš DB tam, kad galėtų automatiškai įkelti į tinklalapį. O apie sėkmingą įkėlimą zurnalistas panel praneša žurnalistui.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/ZurnalistasIkeliaStraipsni}
+    \label{img:uml16}
+	\caption{Žurnalistas įkelia straipsnį}
+\end{figure}
+
+Žurnalistas gali ir peržvelgti visus straipsnius. Kai žurnalistas pasirenka tokią galimybę zurnalistas panel prašo informacijos DB vadovo, kuris ją ima iš DB ir siunčia atgal į zurnalistas panel, o ši pateikia sąrašą žurnalistui. Tada žurnalistas pasirenka straipsnį ir jis gali pasirinkti ką, daryti:
+\begin{itemize}
+\item Ištrinti. Tada zurnalistas panel siunčia straipsnio ID DB vadovui, kuris ištrina straipsnį iš DB ir praneša apie sėkmingą ištrinimą. O zurnalistas panel praneša apie straipsio ištrinimą žurnalistui.
+\item Redaguoti. Zurnalistas panel siunčia straipsnio ID DB vadovui, kuris ima informaciją iš DB ir ją siunčia į zurnalistas panel, kuri straipsnio formą pateikia žurnalistui. Jis gali redaguoti visą straipsnio informaciją, o baigęs išsaugoti. Tada zurnalistas panel siunčia informaciją DB vadovui, kuris atnaujina straipsnio informaciją ir apie sėkmingą atnaujinimą praneša. O zurnalistas panel praneša apie sėkmingą atnaujinimą žurnalistui.
+\end{itemize}	
+	
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/ZurnalistasIstrina_Redaguoja}
+    \label{img:uml16}
+	\caption{Žurnalisto atliekamų veiksmų sekos}
+\end{figure}	
 	
 \section{Struktūrinis programų sistemos modelis}
 Šiame skyriuje nagrinėjamas funkcinių reikalavimų įgyvendinimas, vaizduojamos informacinę festivalių sistemą sudarančios klasės ir jų sąryšiai.
