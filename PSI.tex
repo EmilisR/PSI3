@@ -65,6 +65,49 @@ Todėl atsižvelge i tai nusprendėme, kad geriausia būtų sukurti tinklalapį,
 
 Šio, trečio laboratorinio darbo tikslas yra apibrežti tinklalio architektura naudojant 4+1 architekturos pjūvių modelį, aprašant užduotis ir jų vykdymo scenarijus, strukturinį ir dinaminį tinkalapio modelius, tinklalapio komponentus ir komponentu išskirtyma tinkle.  
 
+
+\section{Struktūrinis programų sistemos modelis}
+Šiame skyriuje nagrinėjamas funkcinių reikalavimų įgyvendinimas, vaizduojamos informacinę festivalių sistemą sudarančios klasės ir jų sąryšiai.
+
+Pirmiausiai pateikiama UML paketų diagrama, kurioje vaizduojamos viso klasėsir jų skirstymas į paketus.
+\begin{center}
+    \includegraphics{paketai}
+\end{center}
+
+Toliau pateiktoje klasių diagramoje vaizduojami klasių, apibrėžiančių administratoriui skirtas funkcijas, ryšiai. \textit{Admin panel} klasė paveldi iš \textit{Žurnalisto panel} klasės, nes ir administratorius gali atlikti visas žurnalisto užduotis.
+\begin{center}
+    \includegraphics{admin}
+\end{center}
+Pagrindinė klasė, leidžianti atlikti žurnalisto užduotis, yra \textit{Žurnalisto panel}. \textit{Žurnalisto panel} naudoja klases: \textit{Straipsnio kūrimas, Straipsnio redagavimas, Straipsnio trynimas}. Šios klasės turi prieigą prie duomenų bazėje saugomų straipsnių, todėl yra susijusios su klase \textit{Straipsnis}. \textit{Žurnalisto panel} taip pat naudoja klasę \textit{\textit{Prisijungimas}.
+Pagrindinė klasė, leidžianti atlikti administratoriaus užduotis, yra \textit{Admin panel}. Be klasių, kurias naudoja \textit{Žurnalisto panel} klasė, \textit{Admin panel} naudoja klases: \textit{Atsiliepimų peržiūra, Vartotojų peržiūra, Komentarų peržiūra, Festivalių peržiūra}. Kadangi šiose klasėse yra metodai leidžiantys dirbti su duomenų bazėje saugoma informacija, klasė \textit{Atsiliepimų peržiūra} yra susijusi su klase \textit{Atsiliepimas}, \textit{Vartotojų peržiūra} - su \textit{Vartotojas}, \textit{Komentarų peržiūra} - su \textit{Komentaras} bei \textit{Festivalių peržiūra} - su \textit{Festivalis}. \textit{Festivalių peržiūra} yra susijusi su klase \textit{Vartotojas}, nes klasėje \textit{Festivalių peržiūra} yra metodas, leidžiantis siūsti informaciją visiem tam tikrą festivalį užsiprenumeravusiems vartotojams.
+
+Žemiau pateiktoje diagramoje vaizduojamas klasių, leidžiančių informuoti vartotoją apie oro sąlygas likus trim dienom iki festivalio, sąryšis.
+\begin{center}
+    \includegraphics{orai}
+\end{center}
+Klasė \textit{Informavimas} yra susijusi su klase \textit{Festivalis}, nes tikrina festivalių datas. Kadangi klasė \textit{Informavimas} turi metodą, leidžiantį siųsti informaciją vartotojams, yra susijusi su klase \textit{Vartotojas}.
+
+Toliau pateikiama naujo festivalio įtraukimo į duomenų bazę diagrama.
+\begin{center}
+    \includegraphics{naujas}
+\end{center}
+Kai užpildoma anketa apie naują festivalį, naujas \textit{Festivalis} yra įtraukiamas į duomenų bazę. Kol administrsatorius nepatikrina pateiktos informacijos \textit{Patvirtinta} turi vertę \textit{false}.
+
+Toliau pateiktoje klasių diagramoje vaizduojami klasių, apibrėžiančių vartotojui skirtas funkcijas, ryšiai.
+\begin{center}
+    \includegraphics{user}
+\end{center}
+Pagrindinė klasė, leidžianti atlikti vartotojo užduotis, yra \textit{Vartotojo sąsaja}. \textit{Vartotojo sąsaja} yra susijusi su klasėmis: \textit{Prisijungimas, Registracija, Kalendorius, Rūšiavimas, Filtravimas, Socialinis įskiepis, Komentaras, Vertinimas, Atsiliepimas}. Klasė \textit{Prisijungimas} gali tikrinti vartotojų sąrašą, o \textit{Registracija} - pridėti naujus vartotojus, todėl šios klasės yra susijusios su klase \textit{Vartotojas}. Klasė \textit{Komentaras} yra susijusi su klase \textit{Straipsnis}, nes \textit{Straipsnis} saugo komentarų sąrašą. Klasės \textit{Komentaras} ir \textit{Vertinimas} yra susijusios su klase \textit{Festivalis}, nes \textit{Festivalis} saugo komentarų ir vertinimų sąrašus. Klasė \textit{Kalendorius} yra susijusi su klase \textit{Festivalis}, nes \textit{Kalendorius} saugo vartotojo pasirinktus festivalius. \textit{Kalendorius} turi sąryšį su klase \textit{Vartotojas}, nes atvaizdavimui naudoja vartotojo festivalių sąrašą. Klasės \textit{Rūšiavimas} ir \textit{Filtravimas} yra susijusios su klase \textit{Festivalis}, nes jos pertvarko vartotojui rodomą festivalių sąrašą.
+
+
+\section{Komponentų išskirstymas tinkle}
+Pateikiama diegimo diagrama, kurioje pavaizduota, kaip festivalių informacinė sistema bus išskirstyta aparatinėje įrangoje. 
+\begin{center}
+    \includegraphics{deploy}
+\end{center}
+Informacija yra saugoma duomenų bazės serveryje (\textit{DB Server}), kuriame yra \textit{MySQL} duomenų bazė. Tinklalapis (\textit{Website}), veikiantis žiniatinklio serveryje (\textit{Web Server}), tvarko ir apdoroja informaciją, saugomą duomenų bazėje. Vartotojas pasiekia tinklalapį per naršyklę, palaikančia HTML5. Naršyklę turi būti instaliuota įrenginyje su interneto prieiga.
+
+
 \section{Verslo proceso aprašas}
 
 Nagrinejama sritis - festivaliu informaciniai šaltiniai. 
