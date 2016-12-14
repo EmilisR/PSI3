@@ -77,12 +77,113 @@ Pirmasis agentas, kurį išnagrinėjome yra vartotojas, jis gali atlikti žemiau
 	\caption{Vartotojo užduotys}
 \end{figure}
 
-Vartotojas gali prisiregistruoti prie mūsų tinklalapio.
- Kad tai padarytų jam reikia atsidarius tinklalapį jo viršuje paspausti registracijos mygtuką, tada yra pateikiama registracijos formą,
- kurią jis privalo užpildyti. Ji yra išsiunčiama registracijos kontrolei, kuri išsaugo naują vartotoją duomenų bazėje. Ji atsako ar yra jau toks vartotojo vardas. 
- Jeigu toks vardas neegzistuoja, yra atidaroma vartotojo paskyrą, o jei toks vartotojo vardas egzistuoja tinklalapis vartotojui praneša,
- kad yra suvesti negalimi registracijos duomenys.
+Vartotojas gali prisiregistruoti prie mūsų tinklalapio. Kad tai padarytų jam reikia atsidarius tinklalapį jo viršuje paspausti registracijos mygtuką, tada yra pateikiama registracijos formą, kurią jis privalo užpildyti. Ji yra išsiunčiama registracijos kontrolei, kuri išsaugo naują vartotoją duomenų bazėje. Ji atsako ar yra jau toks vartotojo vardas.  Jeigu toks vardas neegzistuoja, yra atidaroma vartotojo paskyrą, o jei toks vartotojo vardas egzistuoja tinklalapis vartotojui praneša, kad yra suvesti negalimi registracijos duomenys.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/VartotojoRegistracija}
+    \label{img:uml2}
+	\caption{Vartotojo registracijos seka}
+\end{figure}
+
+Vartotojas gali prisijungti prie tinklalapio. Kad tai padaryti vartotojas turi tinklalapio viršuje paspausti prisijungimo mygtuką. Tai padarius atsiveria prisijungimo langas, kurį užpildžius duomenys yra išsiunčiami į prisijungimo vadovą. Jis pateikia duomenis duomenų bazei patikrinti ar vartotojas egzistuoja. Jeigu toks vartotojas egzistuoja jam yra atidaroma jo paskyra, o jeigu tokio vartotojo nėra pranešama, kad vartotojas neegzistuoja su tokiais duomenimis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/VartotojasPrisijungia}
+    \label{img:uml3}
+	\caption{Vartotojo prisijungimo seka}
+\end{figure}
+
+Vartotojas gali peržiūrėti festivalių sąrašą. Jis turi atsidaryti tinklalapį pasirinkti skiltį “Festivaliai”, tuomet tinklalapis prašo imti festivalių sąrašą iš vartotojo valdovo ( ang. User controller), kuris paima informaciją iš DB. Tada vartotojo valdovas siunčia informaciją tinklalapiui, kuris ją atvaizduoja vartotojui.
+Jeigu vartotojas nori daugiau informacijos apie festivalį, jis turi pasirinkti festivalį. Tada jo ID yra siunčiama vartotojo valdovui, kuris iš DB paima to festivalio informaciją ir tada ją siunčia tinklalapiui. Šis atidaro naują langą su visa informacija. Taip pat, vartotojas gali rašyti komentarus  prie festivalių arba juos vertinti. Tačiau tai gali daryti tik prisijungę vartotojai. Jeigu vartotojas yra prisijungęs jam yra leidžiama naudotis festivalio komentarų bei vertinimo erdve, tada jis gali parašyti komentarą arba vertinimą, kuriuos siunčia į vartotojo vadovą, kuris komentarą arba vertinimą saugo į DB. Vartotojo vadovas patvirtina, kad duomenys yra įkelti. Ir tada tinklalapyje atsiranda komentaras arba vertinimas. Tačiau jeigu vartotojas neturi paskyros jam tinklalapis rašo, kad norint komentuoti arba vertinti reikia turėti paskyrą.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/VartotojasInfoFest_Komentarai}
+    \label{img:uml4}
+	\caption{Vartotojo veiksmai su festivaliais}
+\end{figure}
+
+Vartotojas gali peržiūrėti visus straipsnius. Tai gali padaryti atsidarydamas tinklalapį ir pasirinkdamas skiltį “Naujienos”. Tada tinklalapis siunčia prašymą vartotojo vadovui, kuris iš duomenų bazės ima informaciją ir ją siunčia į tinklalapį, kuris ją pateikia vartotojui. Jeigu vartotojas nori perskaityti visą straipsnį, spaudžia “Skaityti daugiau” ir tada tinklalapis siunčia straipsnio ID vartotojo vadovui, kuris ima informaciją apie tą straipsnį ir jį siunčia į tinklalapį, kuris naujame puslapyje vartotojui parodo straipsnį.
+	Beje, jei vartotojas yra prisijungęs jis gali rašyti komentarą. Šis komentaras yra siunčiamas vartotojo vadovui, kuris įkelia komentarą į DB. Tada, vartotojo vadovas tinklalapiui praneša apie sėkmingą išsaugojimą ir tinklalapyje atsiranda komentaras. Tačiau jei vartotojas nėra prisijungęs tinklalapis jam praneša, kad reikia būti prisijungusiam.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/VartotojasStraips_Komentarai}
+    \label{img:uml5}
+	\caption{Vartotojo veiksmai su straipsniais}
+\end{figure}	
+	
+Vartotojas gali parašyti atsiliepimą. Tai padaryti jis gali atsidaręs tinklalapį ir pasirinkęs skiltį “Apie mus”. Ten jis parašo atsiliepimą, kuris su vartotojo ID yra siunčiami vartotojo vadovui, kuris saugo informaciją į DB. Ir kai saugojimas yra įvykdytas vartotojo vadovas praneša apie sėkmingą įkėlimą tinklalapiui, kuris informuoja vartotoją. Kadangi yra reikalingas ir vartotojo ID, atsiliepimus gali rašyti tik prisijungę vartotojai.
+	
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/VartotojasAtsiliepimas}
+    \label{img:uml6}
+	\caption{Vartotojo atsiliepimų seka}
+\end{figure}	
+	
+Sekantis agentas yra festivalio organizatorius su vienu tikslu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/FestivalioOrg}
+    \label{img:uml7}
+	\caption{Festivalio organizatoriaus užduotis}
+\end{figure}	
+	
+Festivalio organizatorius gali atlikti tik vieną užduotį. Tai yra pranešti apie festivalį. Jis tai gali padaryti atsidaręs tinklalapį ir pasirinkęs skiltį “Festivaliai” ir ten paspaudęs ant mygtuko “Pranešti apie festivalį”. Tuomet tinklalapis pateikia festivalio formą, kurią festivalio organizatorius užpildo ir visa informacija yra išsiunčiama į Admin panel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/FestivalOrgPranesti}
+    \label{img:uml8}
+	\caption{Festivalio organizatoriaus veiksmų seka}
+\end{figure}	
+
+Dar vienas agentas yra administratorius su daugiausia užduočių mūsų tinklalapyje. Jis paveldi visas žurnalisto užduotis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/Administratorius}
+    \label{img:uml9}
+	\caption{Administratoriaus užduotys}
+\end{figure}	
+
+Administratorius gali prisijungti prie sistemos. Tai padaryti jis gali, kai užpildo prisijungimo formą, kurią pateikia admin panel. Ji prisijungimo duomenis siunčia DB vadovui (ang. DB controller), kuris juos tikrina DB’ėje. Jeigu duomeys yra tinkami yra leidžiama naudotis admin panel, o jeigu duomenys nėra rasti - pranešama, kad tokių duomenų nėra sistemoje.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/AdminPrisijungtiPrieSis}
+    \label{img:uml10}
+	\caption{Administratoriaus prisijungimo veiksmų seka}
+\end{figure}
+
+Administratorius gali pridėti festivalį, kurį atsiuntė į sistemą festivalio organizatorius. Jis tai gali padaryti paspaudęs mygtuką “Pridėti festivalį”, tuomet admin panel pateikia festivalio formą, kurią administratorius užpildo pagal atsiųsta informaciją. Tuomet ta informacija yra siunčiama DB vadovui, kuris ją išsaugo DB ir įkelia tą festivalį į tinklalapį bei praneša admin panel apie sėkmingą įkėlimą, o ši informuoja administratorių.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/AdminPridetiFestivali}
+    \label{img:uml11}
+	\caption{Administratorius prideda festivalį}
+\end{figure}
+	
+Administratorius gali peržiūrėti visus publikuotų festivalių skelbimus. Tai gali padaryti pasirinkęs peržiūrėti festivių sąrašą. Tada, admin panel prašo gauti informacijos DB vadovui, o jis iš DB ima ir siunčia informaciją admin panel, kad ji informaciją pateiktų administratoriui. Tada administratorius gali pasirinkti festivalį ir padaryti tokius pasirinkimus: 
+\begin{itemize}
+\item Ištrinti festivalį. Tada admin panel nusiunčia festivalio ID DB vadovui, kuris ištrina festivalį iš DB ir praneša apie sėkmingą funkcijos atlikimą. Ir admin panel praneša administratoriui apie festivalio ištrinimą;
+\item Atnaujinti festivalį. Tada yra nusiunčiamas festivalio ID ir DB vadovas gauna informaciją iš DB ir ją siunčia į admin panel, kuri pateikią festivalio informacijos forma administratoriui. Tuomet administratorius gali pakeisti to festivalio infromaciją ir ją išsaugoti. Tada admin panel siunčia informaciją DB vadovui, kuris atnaujina informaciją DB ir praneša apie sėkmingą atnaujinimą, o admin panel praneša apie tai administratoriui. 
+\end{itemize}
+	
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{img/Pav/AdminIstrintiAtnaujintiFest}
+    \label{img:uml12}
+	\caption{Administratorius veiksmai su festivaliais}
+\end{figure}	
+	
+	
+	
 \section{Struktūrinis programų sistemos modelis}
 Šiame skyriuje nagrinėjamas funkcinių reikalavimų įgyvendinimas, vaizduojamos informacinę festivalių sistemą sudarančios klasės ir jų sąryšiai.
 
