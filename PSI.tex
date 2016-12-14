@@ -100,7 +100,7 @@ Jeigu vartotojas nori daugiau informacijos apie festivalį, jis turi pasirinkti 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.45]{img/Pav/VartotojoInfoFest_Komentarai}
+    \includegraphics[scale=0.45]{img/Pav/VartotojasInfoFest_Komentarai}
     \label{img:uml4}
 	\caption{Vartotojo veiksmai su festivaliais}
 \end{figure}
@@ -241,14 +241,14 @@ Pirmiausiai pateikiama UML paketų diagrama, kurioje vaizduojamos viso klasės i
 \begin{center}
     \includegraphics[scale=0.5]{img/PSI3/paketai}
 	\label{img:uml17}
-	\caption{???????????}
+	\caption{Klasių skirstymas į paketus}
 \end{center}
 
 Toliau pateiktoje klasių diagramoje vaizduojami klasių, apibrėžiančių administratoriui skirtas funkcijas, ryšiai. \textit{Admin panel} klasė paveldi iš \textit{Žurnalisto panel} klasės, nes ir administratorius gali atlikti visas žurnalisto užduotis.
 \begin{center}
     \includegraphics[scale=0.5]{img/PSI3/admin}
 	\label{img:uml18}
-	\caption{???????????}
+	\caption{Klasės, leidžiančios atlikti administratoriaus funkcijas}
 \end{center}
 Pagrindinė klasė, leidžianti atlikti žurnalisto užduotis, yra \textit{Žurnalisto panel}. \textit{Žurnalisto panel} naudoja klases: \textit{Straipsnio kūrimas, Straipsnio redagavimas, Straipsnio trynimas}. Šios klasės turi prieigą prie duomenų bazėje saugomų straipsnių, todėl yra susijusios su klase \textit{Straipsnis}. \textit{Žurnalisto panel} taip pat naudoja klasę \textit{Prisijungimas}.
 Pagrindinė klasė, leidžianti atlikti administratoriaus užduotis, yra \textit{Admin panel}. Be klasių, kurias naudoja \textit{Žurnalisto panel} klasė, \textit{Admin panel} naudoja klases: \textit{Atsiliepimų peržiūra, Vartotojų peržiūra, Komentarų peržiūra, Festivalių peržiūra}. Kadangi šiose klasėse yra metodai leidžiantys dirbti su duomenų bazėje saugoma informacija, klasė \textit{Atsiliepimų peržiūra} yra susijusi su klase \textit{Atsiliepimas}, \textit{Vartotojų peržiūra} - su \textit{Vartotojas}, \textit{Komentarų peržiūra} - su \textit{Komentaras} bei \textit{Festivalių peržiūra} - su \textit{Festivalis}. \textit{Festivalių peržiūra} yra susijusi su klase \textit{Vartotojas}, nes klasėje \textit{Festivalių peržiūra} yra metodas, leidžiantis siūsti informaciją visiem tam tikrą festivalį užsiprenumeravusiems vartotojams.
@@ -257,7 +257,7 @@ Pagrindinė klasė, leidžianti atlikti administratoriaus užduotis, yra \textit
 \begin{center}
     \includegraphics[scale=0.5]{img/PSI3/orai.PNG}
 	\label{uml:19}
-	\caption{?????????}
+	\caption{Klasės, leidžiančios informuoti vartotoją}
 \end{center}
 Klasė \textit{Informavimas} yra susijusi su klase \textit{Festivalis}, nes tikrina festivalių datas. Kadangi klasė \textit{Informavimas} turi metodą, leidžiantį siųsti informaciją vartotojams, yra susijusi su klase \textit{Vartotojas}.
 
@@ -265,7 +265,7 @@ Toliau pateikiama naujo festivalio įtraukimo į duomenų bazę diagrama.
 \begin{center}
     \includegraphics[scale=0.5]{img/PSI3/naujas.PNG}
 	\label{uml:20}
-	\caption{?????????}
+	\caption{Klasės, leidžiančios įkelti informaviją apie nauja festivalį}
 \end{center}
 Kai užpildoma anketa apie naują festivalį, naujas \textit{Festivalis} yra įtraukiamas į duomenų bazę. Kol administrsatorius nepatikrina pateiktos informacijos \textit{Patvirtinta} turi vertę \textit{false}.
 
@@ -273,7 +273,7 @@ Toliau pateiktoje klasių diagramoje vaizduojami klasių, apibrėžiančių vart
 \begin{center}
     \includegraphics[scale=0.5]{img/PSI3/user}
 	\label{uml:21}
-	\caption{?????????}
+	\caption{Klasės, leidžiančios atlikti vartotojo funkcijas}
 \end{center}
 Pagrindinė klasė, leidžianti atlikti vartotojo užduotis, yra \textit{Vartotojo sąsaja}. \textit{Vartotojo sąsaja} yra susijusi su klasėmis: \textit{Prisijungimas, Registracija, Kalendorius, Rūšiavimas, Filtravimas, Socialinis įskiepis, Komentaras, Vertinimas, Atsiliepimas}. Klasė \textit{Prisijungimas} gali tikrinti vartotojų sąrašą, o \textit{Registracija} - pridėti naujus vartotojus, todėl šios klasės yra susijusios su klase \textit{Vartotojas}. Klasė \textit{Komentaras} yra susijusi su klase \textit{Straipsnis}, nes \textit{Straipsnis} saugo komentarų sąrašą. Klasės \textit{Komentaras} ir \textit{Vertinimas} yra susijusios su klase \textit{Festivalis}, nes \textit{Festivalis} saugo komentarų ir vertinimų sąrašus. Klasė \textit{Kalendorius} yra susijusi su klase \textit{Festivalis}, nes \textit{Kalendorius} saugo vartotojo pasirinktus festivalius. \textit{Kalendorius} turi sąryšį su klase \textit{Vartotojas}, nes atvaizdavimui naudoja vartotojo festivalių sąrašą. Klasės \textit{Rūšiavimas} ir \textit{Filtravimas} yra susijusios su klase \textit{Festivalis}, nes jos pertvarko vartotojui rodomą festivalių sąrašą.
 
@@ -284,45 +284,14 @@ Pagrindinė klasė, leidžianti atlikti vartotojo užduotis, yra \textit{Vartoto
 
 Žemiau pateikta veiklos diagrama, kuri rodo ką vartotojas gali daryti tinklalapyje pasirinkęs “Festivaliai” skiltį. Vartotojas gali tiesiog ieškoti straipsnio eidamas per visą skiltį arba jis gali tikslingai pasirinkti rikiavimo arba filtravimo būdą, arba žinodamas festivalio pavadinimą - jį gali įvesti į paieškos laukelį. Iš atrinktų festivalių vartotojas gali toliau rinktis festivalį. O tada gali išsirinkti vieną festivalį ir arba jis randa informaciją, kurios ir ieškojo, arba, jeigu vartotojas yra prisijungęs, jis gali įvertinti festivalį, diskutuoti su žmonėmis arba užsiprenumeruoti festivalį. Jeigu vartotojas užsiprenumeruoja festivalį, tada likus trims dienoms iki festivalio jam yra pranešama, kokia bus meteorologinė situacija festivalio metu.
 
-\begin{figure}
-	\centering
-    \includegraphics[scale=0.5]{img/Pav/VartotojasFestivalis}
-	\label{uml:22}
-	\caption{Vartotojo veiksmai "Festivaliai" skiltyje}
-\end{figure}
-
-Beje, vartotojas gali pasirinkti skiltį “Naujienos”. Tada jis gali ieškoti straipsnio, jeigu jis randa straipsnį, kurį nori perskaityti - spaudžia “Skaityti daugiau”. Tada gali perskaityti straipsnį ir jeigu nori bei yra prisijungęs vartotojas gali komentuoti. Arba gali eiti toliau ieškoti straipsnio.
-
-\begin{figure}
-	\centering
-    \includegraphics[scale=0.5]{img/Pav/VartotojasStraipsnis}
-	\label{uml:23}
-	\caption{Vartotojo veiksmai "Naujienos" skiltyje}
-\end{figure}
-
-Vartotojas atsidaręs tinklalapį, jei turi paskyrą gali prie jos prisijungti. Tai padaro paspausdamas prisijungimo mygtuką ir įvesdamas prisijungimo duomenis ir taip prisijungia. Tačiau jei jis neturi savo paskyros vartotojas gali paspausti registracijos mygtuką ir tada gali pasirinkti naudoti įskiepius, jeigu nenori jis užpildo registracijos formą, o jeigu nori naudoja įskiepius. Ir taip susikuria paskyrą.
-	Prisijungęs ar susikūręs pasykrą vartotojas gali paspausti ant “Mano meniu” mygtuko ir tada gali rinktis ką nori daryti:
-\begin{itemize}
-\item Gali paspausti ant mygtuko “Mano kalendorius” ir tada pamato jo pasirinktus festivalius kalendoriuje. Jeigu jis nori gauti informacijos vartotojas paspaudžia ant festivalio ir atsiranda langas su festivalio informacija.
-\item Gali paspausti ant “Nauji pranešimai” mygtuko ir tada jeigu yra naujų pranešimų jie yra matomi, o jeigu jų nėra, tada būna parašyta, kad naujų pranešimų nėra. 
-\item Gali pasirinkti “Užsiprenumeruoti festivaliai” pasirinkties ir tada vartotojas mato sąrašą festivalių, kuriuos jis užsiprenumeravęs. Jeigu nori gali paspausti ant festivalio ir sužinoti daugiau informacijos apie jį.
-\item Gali paspausti ant “Nustatymai”. Tada vartotojas gali pakeisti savo paskyros duomenis (slapyvardis, slaptažodis, paskyros paveikslėlį) arba gali pakeisti “Domina” nustatymus.
-\end{itemize}
- Visais atvejais vartotojas gali grįžti į “Mano meniu” ir tęsti veiklą.
- 
-\begin{figure}
-	\centering
-    \includegraphics[scale=0.5]{img/Pav/VartotojasPrisijungesFunk}
-	\label{uml:24}
-	\caption{Vartotojo veiksmai prisijungus}
-\end{figure}
-
 
 
 \section{Komponentų išskirstymas tinkle}
 Pateikiama diegimo diagrama, kurioje pavaizduota, kaip festivalių informacinė sistema bus išskirstyta aparatinėje įrangoje. 
 \begin{center}
     \includegraphics[scale=0.5]{img/PSI3/deploy.PNG}
+	\label{uml:22}
+	\caption{Komponentų išskirstymas tinkle}
 \end{center}
 Informacija yra saugoma duomenų bazės serveryje (\textit{DB Server}), kuriame yra \textit{MySQL} duomenų bazė. Tinklalapis (\textit{Website}), veikiantis žiniatinklio serveryje (\textit{Web Server}), tvarko ir apdoroja informaciją, saugomą duomenų bazėje. Vartotojas pasiekia tinklalapį per naršyklę, palaikančia HTML5. Naršyklę turi būti instaliuota įrenginyje su interneto prieiga.
 
