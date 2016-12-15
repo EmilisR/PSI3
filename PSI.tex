@@ -424,6 +424,35 @@ Vartotojas gali būti: lankytojas, vartotojas, ieškantis, turintis informaciją
 
 \textit{Festival view controller} detalizuotoje diagramoje pavaizduoti komponentai \textit{Fesival Sorter}, \textit{Festival Searcher} ir \textit{Fesival Filter} atsakingus už festivalių sąrašo tvarkymą. Visi kompontai naudodama \textit{SearchCriteria} interfeisą paramentrų gavimui ir \textit{ICustomList} interfeisą rezultato gražinimui. Komponentas \textit{Festival List Controller} ataskingas už festivalių sarašo formavamimą naudojant \textit{FestivalData} interfeisą ir pateikia web vartotojo sąsają textit{IFestivalListWebUI}. 
 
+\begin{figure}[H]
+\centering
+    \includegraphics[scale=0.5]{img/PSI3/DataBaseController.PNG}
+	\label{mantas:4}
+	\caption{Detalizuota festivalių sarašo geravimo komponentų diagrama}
+\end{figure}
+
+Detalizuotoje \textit{Data base controller} komponentų diagramoje vaizduojame kaip formuojamos ir vykdomos SQL duomenų 
+bazės užklausos. \textit{Sql Querry Formatter} komponentas teikia iterfesius reikalingus formuoti pagrindines duomenų bazės 
+operacijas - Insert,Delete, Update ir Select ir naudodamas \textit{Executable SQL querry} interfeisą formuoja užklausas 
+duomenų bazei. \textit{SQL querry executor} komponetas įvykdo gautas užklausas ir pateikia rezultatus kaip textit{SQL Table
+}interfeisą. Taip pat šis komponentas tikrina ar suvesti vartotojo duomenys teisingi, gaudamas ir grąžindamas rezultatą per
+{UserCheck} iterfeisą, kurį naudoja \textit{Authentication service} komponentas teikdamas \textit{IAuth} interfeisą. Komponentas
+\textit{Data Extractor} išanalizuoja gautus duomenis, teikdamas įvairius duomenų perdavimo intereisus.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[scale=0.5]{img/PSI3/UserContentController.PNG}
+	\label{mantas:5}
+	\caption{Detalizuota festivalių sarašo geravimo komponentų diagrama}
+\end{figure}
+
+Detalizuotoje \textit{User Controller diagramoje} aprašoma kaip veikia tinkalalapyje esantis kalendorius. \textit{Calendar 
+controller} gautus duomenis apie vykstančių festivalių datas ir vartotojus sujungia į vartotojo kalendorių ir pateikia kaip
+\textit{IUserCalendarWebUI} intereisą tinklalapiui. Taip pat šis komponentas turi \textit{Calendar Notification} interfeisą 
+kurį naudoja \textit{Message Control} komponentas atsakingas už vartotojo informavimą apie ateinančius festivalius. Žinutės 
+tinklaslapiui perduodamos \textit{IUserNotificationWebUI}.
+
+
  \begin{figure}[H]
 \centering
     \includegraphics[scale=0.4]{img/PSI3/WebPage.PNG}
