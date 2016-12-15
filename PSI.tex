@@ -417,13 +417,25 @@ Vartotojas gali būti: lankytojas, vartotojas, ieškantis, turintis informaciją
 
  \begin{figure}[H]
 \centering
-    \includegraphics[scale=0.8]{img/PSI3/FestivalisViewController.PNG}
+    \includegraphics[scale=0.4]{img/PSI3/FestivalisViewController.PNG}
 	\label{mantas:2}
 	\caption{Detalizuota festivalių sarašo geravimo komponentų diagrama}
 \end{figure}
 
 \textit{Festival view controller} detalizuotoje diagramoje pavaizduoti komponentai \textit{Fesival Sorter}, \textit{Festival Searcher} ir \textit{Fesival Filter} atsakingus už festivalių sąrašo tvarkymą. Visi kompontai naudodama \textit{SearchCriteria} interfeisą paramentrų gavimui ir \textit{ICustomList} interfeisą rezultato gražinimui. Komponentas \textit{Festival List Controller} ataskingas už festivalių sarašo formavamimą naudojant \textit{FestivalData} interfeisą ir pateikia web vartotojo sąsają textit{IFestivalListWebUI}. 
 
+ \begin{figure}[H]
+\centering
+    \includegraphics[scale=0.4]{img/PSI3/WebPage.PNG}
+	\label{mantas:3}
+	\caption{Detalizuota festivalių sarašo geravimo komponentų diagrama}
+\end{figure}
+
+Viršuje esančioje diagramoje vaizduojama kaip tinklalapio WebPage komponentas ir jo sąveika su duomenenų baze.
+\textit{WebDrawer} komponentas naudodamas įvarius \textit{webUI} interfesus kuria tinklalapio grafinį vaizdą ir turi interfeisą \textit{Interactable} kuris
+leidžia bendrauti su komponentas atsakingais už vartotojų veiklos tinklalapyje perdavimą duomenų bazei. \textit{User activity controller} 
+perduoda prisijungūsių vartotojų sąveikas - įvertinimus,atsiliepimus, komentarus, pranešimus apie netinkamą turinį kompontams kurie 
+atsakingi už šių pranešimų performulavimą duomenų bazei suprantama kalba. Analogiškai vyksta ir su \textit{Direct Message} komponentu, tik ten perduodamas nebutinai prisijungūsių vartotojų turinys pranešimai apie festivalius ir atsielimai apie tinklalapį. 
 \section{Komponentų išskirstymas tinkle}
 Pateikiama diegimo diagrama, kurioje pavaizduota, kaip festivalių informacinė sistema bus išskirstyta aparatinėje įrangoje. 
 \begin{figure}[H]
