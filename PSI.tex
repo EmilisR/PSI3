@@ -413,7 +413,16 @@ Vartotojas gali būti: lankytojas, vartotojas, ieškantis, turintis informaciją
  \textit{Review Formatter} komponentas paverčia per \textit{ReviewData} gautus atsiliepimų duomenis web interfeisu \textit{IReviewWebUI}.
  \textit{Fesival data formatter} komponentas atsakingas už kiekvieno individualaus festivalio puslapio išvaizdos interfesio \textit{IFestivalWebUI} generavimą naudojant komentarų ir atsiliepimų gautus Web interesus ir festivalio duomenis.
  \textit{Fesival view controller} naudodamas iš tinklalapio gautus paieškos kriterius kaip \textit{SearchCriteria} intereisą ir duomenis apie fesivalius sukuria fesivalių sąrašo interfesisą \textit{IFestivalListWebUI}.
- Festivalio duomenys naudojami \textit{Calendar Generator} komponento generuoti festivalių kalendorių ir perduoti jį kaip \textit{CommentData} interfeisu \textit{User Contnent Controller} kuris atsakingas už kalendoriaus ir asmeninių pranešimų apie ateinančius festivalius web vartotojų sąsajų interefesių perdavimą pagrindiniam tinkalalpiui.    
+ Festivalio duomenys naudojami \textit{Calendar Generator} komponento generuoti festivalių kalendorių ir perduoti jį kaip \textit{CommentData} interfeisu \textit{User Contnent Controller} kuris atsakingas už kalendoriaus ir asmeninių pranešimų apie ateinančius festivalius web vartotojų sąsajų interefesių perdavimą pagrindiniam tinkalalpiui. 
+
+ \begin{figure}[H]
+\centering
+    \includegraphics[scale=0.8]{img/PSI3/FestivalisViewController.PNG}
+	\label{mantas:2}
+	\caption{Detalizuota festivalių sarašo geravimo komponentų diagrama}
+\end{figure}
+
+\textit{Festival view controller} detalizuotoje diagramoje pavaizduoti komponentai \textit{Fesival Sorter}, \textit{Festival Searcher} ir \textit{Fesival Filter} atsakingus už festivalių sąrašo tvarkymą. Visi kompontai naudodama \textit{SearchCriteria} interfeisą paramentrų gavimui ir \textit{ICustomList} interfeisą rezultato gražinimui. Komponentas \textit{Festival List Controller} ataskingas už festivalių sarašo formavamimą naudojant \textit{FestivalData} interfeisą ir pateikia web vartotojo sąsają textit{IFestivalListWebUI}. 
 
 \section{Komponentų išskirstymas tinkle}
 Pateikiama diegimo diagrama, kurioje pavaizduota, kaip festivalių informacinė sistema bus išskirstyta aparatinėje įrangoje. 
