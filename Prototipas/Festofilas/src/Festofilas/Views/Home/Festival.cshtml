@@ -8,24 +8,25 @@
 
 <h2>@Model.Name</h2>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <img class="img-responsive"
              src='@Model.DisplayImage' style="max-width: 350px; max-height: 350px"/>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
         <div class="h4">Tipas: @Model.Genre</div>
         <div class="h4">Data: @Model.Date.ToString("D")</div>
         <p>@Model.Summary</p>
         <div class="h4">
-            Festivalio svetainė: <a href="http://@Model.Webpage">@Model.Webpage</a>.
+            Festivalio svetainė: <a href="http://@Model.Webpage">@Model.Webpage</a>
+            <br />
             Festivalio facebook'as: <img onclick="window.open('http://@Model.Facebook')" src="../../images/fb.png" style="width: 25px; height: 25px"/>
         </div>
         <div class="col-md-6">
             <div class="h4">
-                Kainos: @Model.LowestPrice € - @Model.HighestPrice €. <a href="http://@Model.TicketWebsite">Biletai</a>
+                Kainos: @Model.LowestPrice € - @Model.HighestPrice €. <a href="http://@Model.TicketWebsite">Bilietai</a>
             </div>
             <div class="h4">Adresas: @Model.PlainTextAddress</div>
-            <div class="h3">Organizatoriaus kontakatai</div>
+            <div class="h3">Organizatoriaus kontaktai</div>
             <ul class="list-unstyled">
                 @if (!string.IsNullOrEmpty(Model.FirstName))
                 {
@@ -51,18 +52,20 @@
 
             <div id="map" style="width: 200px; height: 200px; max-width: 100%; max-height: 100%;"></div>
         </div>
+        
+
 
         <script>
             function myMap() {
                 var mapCanvas = document.getElementById("map");
                 var mapOptions = {
-                    center: new google.maps.LatLng({ lat: @Model.Latitude, lng: @Model.Longitude }),
+                    center: new google.maps.LatLng({ lat: @Model.Longitude, lng: @Model.Latitude }),
                     zoom: 13,
                     disableDefaultUI: true
 
                 }
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng({ lat: @Model.Latitude, lng: @Model.Longitude })
+                    position: new google.maps.LatLng({ lat: @Model.Longitude, lng: @Model.Latitude })
                 });
                 var map = new google.maps.Map(mapCanvas, mapOptions);
                 map.setClickableIcons(false);
@@ -70,7 +73,15 @@
             }
         </script>
     </div>
+    <div class="col-md-1">
+
+
+        <!-- weather widget start --><a><img src="https://w.bookcdn.com/weather/picture/32_32886_1_1_3498db_250_2980b9_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=93227" alt="booked.net" /></a><!-- weather widget end -->
+
+    </div>
 </div>
+
+    
 @if (User.Identity.IsAuthenticated)
 {
     <button class="btn btn-default" onclick="window.location ='@Url.Action("EditFestival", "Home", new {id = Model.Id})'; ">Keisti festivalį</button>

@@ -38,7 +38,8 @@
           "Microsoft.EntityFrameworkCore": "1.0.1",
           "System.Data.Common": "4.3.0",
           "System.Data.SqlClient": "4.3.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0"
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
+          "Microsoft.AspNetCore.Identity": "1.0.0"
         },
         "runtime": {
           "Festofilas.dll": {}
