@@ -12,9 +12,9 @@ namespace Festofilas.Models.MainViewModels
 
         public GenreEnum Genre { get; set; }
 
-        public int LowestPrice { get; set; }
+        public double LowestPrice { get; set; }
 
-        public int HighestPrice { get; set; }
+        public double HighestPrice { get; set; }
 
         public string Webpage { get; set; }
 
@@ -41,5 +41,15 @@ namespace Festofilas.Models.MainViewModels
 
         public string DisplayImage { get; set; }
         public int Id { get; set; }
+        public double TotalScore { get; set; }
+        public int NumberOfVotes { get; set; }
+        public double Rate
+        {
+            get { return Math.Round(TotalScore / NumberOfVotes, 2) > 0 ? Math.Round(TotalScore / NumberOfVotes, 2) : 0; }
+        }
+        public void updateNumberOfVotes()
+        {
+            NumberOfVotes++;
+        }
     }
 }

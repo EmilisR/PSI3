@@ -171,6 +171,8 @@ namespace Festofilas.Controllers
                     LowestPrice = item.LowestPrice,
                     HighestPrice = item.HighestPrice,
                     Summary = item.Summary,
+                    NumberOfVotes = item.NumberOfVotes,
+                    TotalScore = item.TotalScore,
                     TicketWebsite = item.TicketWebsite,
                     Webpage = item.Webpage,
                     ContactsJson = new Contacts() { Email = item.Email, Facebook = item.Facebook, FirstName = item.FirstName, LastName = item.LastName, PhoneNumber = item.PhoneNumber }.Serialize(),
@@ -193,6 +195,11 @@ namespace Festofilas.Controllers
             }
             return RedirectToAction($"Festival/{id}");
         }
+        public void UpdateFestival(int id)
+        {
+            var festival = _context.Festivals.FirstOrDefault(x => x.Id == id);
+            festival.NumberOfVotes++;
+        }
         public IActionResult EditFestival(int id)
         {
             var festival = _context.Festivals.FirstOrDefault(x => x.Id == id);
@@ -213,6 +220,8 @@ namespace Festofilas.Controllers
                 fester.LowestPrice = item.LowestPrice;
                 fester.HighestPrice = item.HighestPrice;
                 fester.Summary = item.Summary;
+                fester.NumberOfVotes = item.NumberOfVotes;
+                fester.TotalScore = item.TotalScore;
                 fester.TicketWebsite = item.TicketWebsite;
                 fester.Webpage = item.Webpage;
                 fester.ContactsJson =

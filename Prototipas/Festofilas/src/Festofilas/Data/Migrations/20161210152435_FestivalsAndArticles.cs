@@ -35,7 +35,8 @@ namespace Festofilas.Data.Migrations
                     ContactsJson = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     Genre = table.Column<int>(nullable: false),
-                    HighestPrice = table.Column<int>(nullable: false),
+                    Highest
+                    = table.Column<int>(nullable: false),
                     Image64 = table.Column<string>(nullable: true),
                     LocationJson = table.Column<string>(nullable: true),
                     LowestPrice = table.Column<int>(nullable: false),

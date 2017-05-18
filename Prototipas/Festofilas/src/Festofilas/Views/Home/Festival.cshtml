@@ -1,4 +1,5 @@
-﻿@using Festofilas.Models.MainViewModels
+﻿@using Festofilas.Models.MainViewModels;
+@using Festofilas.Data.Model;
 @model Festofilas.Models.MainViewModels.FestivalViewModel
 @{
     ViewData["Title"] = Model.Name;
@@ -53,8 +54,32 @@
             <div id="map" style="width: 200px; height: 200px; max-width: 100%; max-height: 100%;"></div>
         </div>
         
+        <div class="col-md-8">
+            <div style="display:inline-block">
+                <span style="font-size:20px;margin-right:11px" class="rtng" aria-hidden="true">@Model.Rate</span>
+                <fieldset class="rating" style="height: 24px;">
+                    <input type="radio" id="star5" name="rating" value="5" onclick="rateFestival(star5.value)"/><label class="full" for="star5" title="Excellent - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Awesome - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Good - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Above average - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Average - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Below average - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Bad - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Very Bad - 0.5 stars"></label>
+                </fieldset>
+                <div style="display:inline;font-size:15px;margin-left:11px">
+                    <span class="_Mnc _yz" style="white-space:nowrap">@Model.NumberOfVotes atsiliepimai</span>
+                </div>
+            </div>
+            
+        </div>
 
-
+        <script>
+            function rateFestival(value) {
+            }
+        </script>
         <script>
             function myMap() {
                 var mapCanvas = document.getElementById("map");

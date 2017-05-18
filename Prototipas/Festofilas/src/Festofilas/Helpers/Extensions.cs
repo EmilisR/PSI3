@@ -27,11 +27,13 @@ namespace Festofilas.Helpers
                 Facebook = contact.Facebook,
                 DisplayImage = festival.Image64,
                 Email = contact.Email,
-                HighestPrice = festival.HighestPrice.Value,
+                HighestPrice = festival.HighestPrice,
                 Latitude = location.Latitude,
                 Longitude = location.Longitude,
-                LowestPrice = festival.LowestPrice.Value,
+                LowestPrice = festival.LowestPrice,
                 Summary = festival.Summary,
+                TotalScore = festival.TotalScore,
+                NumberOfVotes = festival.NumberOfVotes,
                 TicketWebsite = festival.TicketWebsite,
                 Webpage = festival.Webpage
             };
