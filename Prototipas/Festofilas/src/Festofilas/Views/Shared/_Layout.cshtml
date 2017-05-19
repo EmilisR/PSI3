@@ -6,18 +6,23 @@
     <title>@ViewData["Title"] - Festofilas</title>
 
     <environment names="Development">
+        <script src='//code.jquery.com/jquery-latest.min.js'></script>
+        <script src='app.js'></script>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="alternate stylesheet" id="blue" title="blue" href="~/css/site-blue.css">
+        <link rel="alternate stylesheet" id="noblue" title="noblue" href="~/css/site.css">
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        
     </environment>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,6 +48,9 @@
 
 
                     </li>
+                    <li>
+                        <input type="submit" class="button" onclick="switch_style('blue');return false;" name="theme" value="Tema" id="blue">
+                    </li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -52,12 +60,13 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - Festofilas</p>
+            <p>&copy; 2017 - Festofilas</p>
         </footer>
     </div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/css/theme.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>

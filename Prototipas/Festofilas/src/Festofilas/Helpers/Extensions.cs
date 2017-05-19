@@ -32,6 +32,7 @@ namespace Festofilas.Helpers
                 Longitude = location.Longitude,
                 LowestPrice = festival.LowestPrice,
                 Summary = festival.Summary,
+                WidgetCode = festival.WidgetCode,
                 TotalScore = festival.TotalScore,
                 NumberOfVotes = festival.NumberOfVotes,
                 TicketWebsite = festival.TicketWebsite,

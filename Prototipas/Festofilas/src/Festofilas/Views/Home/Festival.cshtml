@@ -1,5 +1,6 @@
 ﻿@using Festofilas.Models.MainViewModels;
 @using Festofilas.Data.Model;
+@using Festofilas.Controllers;
 @model Festofilas.Models.MainViewModels.FestivalViewModel
 @{
     ViewData["Title"] = Model.Name;
@@ -58,16 +59,16 @@
             <div style="display:inline-block">
                 <span style="font-size:20px;margin-right:11px" class="rtng" aria-hidden="true">@Model.Rate</span>
                 <fieldset class="rating" style="height: 24px;">
-                    <input type="radio" id="star5" name="rating" value="5" onclick="rateFestival(star5.value)"/><label class="full" for="star5" title="Excellent - 5 stars"></label>
-                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Awesome - 4.5 stars"></label>
-                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Good - 3.5 stars"></label>
-                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Above average - 3 stars"></label>
-                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Average - 2.5 stars"></label>
-                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Below average - 2 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Bad - 1 star"></label>
-                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Very Bad - 0.5 stars"></label>
+                    <input type="radio" id="star5" name="rating" value="5" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 5})';"/><label class="full" for="star5" title="Excellent - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4.5" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 4.5})';"/><label class="half" for="star4half" title="Awesome - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 4})';"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3.5" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 3.5})';"/><label class="half" for="star3half" title="Good - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 3})';"/><label class="full" for="star3" title="Above average - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2.5" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 2.5})';"/><label class="half" for="star2half" title="Average - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 2})';"/><label class="full" for="star2" title="Below average - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1.5" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 1.5})';"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 1})';"/><label class="full" for="star1" title="Bad - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="0.5" onclick="window.location = '@Url.Action("UpdateRating", "Home", new {id = Model.Id, vote = 0.5})';"/><label class="half" for="starhalf" title="Very Bad - 0.5 stars"></label>
                 </fieldset>
                 <div style="display:inline;font-size:15px;margin-left:11px">
                     <span class="_Mnc _yz" style="white-space:nowrap">@Model.NumberOfVotes atsiliepimai</span>
@@ -76,34 +77,38 @@
             
         </div>
 
-        <script>
-            function rateFestival(value) {
-            }
-        </script>
-        <script>
-            function myMap() {
-                var mapCanvas = document.getElementById("map");
-                var mapOptions = {
-                    center: new google.maps.LatLng({ lat: @Model.Longitude, lng: @Model.Latitude }),
-                    zoom: 13,
-                    disableDefaultUI: true
+            <script>
+                function myMap() {
+                    getWidget();
+                    var mapCanvas = document.getElementById("map");
+                    var mapOptions = {
+                        center: new google.maps.LatLng({ lat: @Model.Longitude, lng: @Model.Latitude }),
+                        zoom: 13,
+                        disableDefaultUI: true
 
+                    }
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng({ lat: @Model.Longitude, lng: @Model.Latitude })
+                    });
+                    var map = new google.maps.Map(mapCanvas, mapOptions);
+                    map.setClickableIcons(false);
+                    marker.setMap(map);
                 }
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng({ lat: @Model.Longitude, lng: @Model.Latitude })
-                });
-                var map = new google.maps.Map(mapCanvas, mapOptions);
-                map.setClickableIcons(false);
-                marker.setMap(map);
-            }
-        </script>
-    </div>
+            </script>
+</div>
     <div class="col-md-1">
 
 
-        <!-- weather widget start --><a><img src="https://w.bookcdn.com/weather/picture/32_32886_1_1_3498db_250_2980b9_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=93227" alt="booked.net" /></a><!-- weather widget end -->
+        <!-- weather widget start --><a><img id="widget" src="" alt="booked.net" /></a><!-- weather widget end -->
 
     </div>
+    <script>
+        function getWidget() {
+            console.log("@Model.WidgetCode");
+            var widget = document.getElementById("widget");
+            widget.src = "https://w.bookcdn.com/weather/picture/32_" + "@Model.WidgetCode" + "_1_1_3498db_250_2980b9_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=93227";
+        }
+    </script>
 </div>
 
     

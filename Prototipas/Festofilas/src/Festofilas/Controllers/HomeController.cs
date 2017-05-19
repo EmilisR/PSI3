@@ -100,6 +100,18 @@ namespace Festofilas.Controllers
         {
             return View();
         }
+        public IActionResult UpdateRating(int id, double vote)
+        {
+            if (ModelState.IsValid)
+            {
+                var fester = _context.Festivals.FirstOrDefault(x => x.Id == id);
+                fester.NumberOfVotes++;
+                fester.TotalScore += vote;
+                _context.Festivals.Update(fester);
+                _context.SaveChanges();
+            }
+            return Redirect("/Home/Festival/" + id);
+        }
         [Authorize]
         public IActionResult AddFestival()
         {
@@ -172,6 +184,7 @@ namespace Festofilas.Controllers
                     HighestPrice = item.HighestPrice,
                     Summary = item.Summary,
                     NumberOfVotes = item.NumberOfVotes,
+                    WidgetCode = item.WidgetCode,
                     TotalScore = item.TotalScore,
                     TicketWebsite = item.TicketWebsite,
                     Webpage = item.Webpage,
@@ -195,11 +208,6 @@ namespace Festofilas.Controllers
             }
             return RedirectToAction($"Festival/{id}");
         }
-        public void UpdateFestival(int id)
-        {
-            var festival = _context.Festivals.FirstOrDefault(x => x.Id == id);
-            festival.NumberOfVotes++;
-        }
         public IActionResult EditFestival(int id)
         {
             var festival = _context.Festivals.FirstOrDefault(x => x.Id == id);
@@ -221,6 +229,7 @@ namespace Festofilas.Controllers
                 fester.HighestPrice = item.HighestPrice;
                 fester.Summary = item.Summary;
                 fester.NumberOfVotes = item.NumberOfVotes;
+                fester.WidgetCode = item.WidgetCode;
                 fester.TotalScore = item.TotalScore;
                 fester.TicketWebsite = item.TicketWebsite;
                 fester.Webpage = item.Webpage;

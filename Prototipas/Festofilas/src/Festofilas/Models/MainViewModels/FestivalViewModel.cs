@@ -43,6 +43,7 @@ namespace Festofilas.Models.MainViewModels
         public int Id { get; set; }
         public double TotalScore { get; set; }
         public int NumberOfVotes { get; set; }
+        public string WidgetCode { get; set; }
         public double Rate
         {
             get { return Math.Round(TotalScore / NumberOfVotes, 2) > 0 ? Math.Round(TotalScore / NumberOfVotes, 2) : 0; }

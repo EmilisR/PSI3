@@ -4,6 +4,7 @@
     ViewData["Title"] = "Statistika";
 }
 <h1>Iš viso užsiregistravusių vartotojų: @Model.AmountOfUsers</h1>
+@Model.Dict.Count
 <h1>Vartotoju komentarai</h1>
 @foreach (var user in Model.Dict)
 {
