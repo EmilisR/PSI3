@@ -76,7 +76,6 @@
             </div>
             
         </div>
-
             <script>
                 function myMap() {
                     getWidget();
@@ -104,9 +103,48 @@
     </div>
     <script>
         function getWidget() {
-            console.log("@Model.WidgetCode");
             var widget = document.getElementById("widget");
             widget.src = "https://w.bookcdn.com/weather/picture/32_" + "@Model.WidgetCode" + "_1_1_3498db_250_2980b9_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=93227";
+            if (@Model.Rate > 4.75){
+                var star = document.getElementById("star5");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 4.25){
+                var star = document.getElementById("star4half");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 3.75){
+                var star = document.getElementById("star4");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 3.25){
+                var star = document.getElementById("star3half");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 2.75){
+                var star = document.getElementById("star3");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 2.25){
+                var star = document.getElementById("star2half");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 1.75){
+                var star = document.getElementById("star2");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 1.25){
+                var star = document.getElementById("star1half");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 0.75){
+                var star = document.getElementById("star1");
+                star.checked = true;
+            }
+            else if (@Model.Rate > 0.25){
+                var star = document.getElementById("starhalf");
+                star.checked = true;
+            }
         }
     </script>
 </div>
