@@ -271,7 +271,16 @@ namespace Festofilas.Controllers
             }
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
-
+        public async Task<IActionResult> FindUser(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
+                return Redirect("/Home");
+            }
+            else return Redirect("/Manage");
+        }
         //GET: /Manage/ManageLogins
         [HttpGet]
         public async Task<IActionResult> ManageLogins(ManageMessageId? message = null)

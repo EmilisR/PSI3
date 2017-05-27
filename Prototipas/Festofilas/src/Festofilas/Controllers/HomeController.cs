@@ -271,6 +271,16 @@ namespace Festofilas.Controllers
             return RedirectToAction($"Festival/{item.Id}");
 
         }
+        public IActionResult SubscribeFestival(int id, string email)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _context.Users.FirstOrDefault(x => x.Email == email);
+                //user.SubscribedFestivals.Add(_context.Festivals.FirstOrDefault(x => x.Id == id));
+            }
+            return Redirect("/Home/Festival/" + id);
+
+        }
         public IActionResult Festival(int id)
         {
             var festival = _context.Festivals.FirstOrDefault(x => x.Id == id);

@@ -32,9 +32,16 @@
                 <br />
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div style="margin: auto; display: block;" class="btn btn-default" onclick="window.location = ('@Url.Action("AddArticle", "Home")')">Sukurti Straipsnį</div>
+                    <div style="margin: auto; display: -webkit-inline-box;" class="btn btn-default" onclick="window.location = ('@Url.Action("AddArticle", "Home")')">Sukurti Straipsnį</div>
                 }
             </div>
+        </div>
+        <div class="col-md-2" style="margin: auto; display: inline;">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <b>Vartotojo El. Paštas</b><input type = "text" name = "email" id="email">
+                    <div  class="btn btn-default" onclick="window.location = ('@Url.Action("FindUser", "Manage", new { email = "aaa@aaa.lt" })')">Rasti vartotoją</div>
+                }
         </div>
     </div>
 </div>

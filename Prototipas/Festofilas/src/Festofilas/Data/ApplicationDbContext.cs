@@ -32,6 +32,7 @@ namespace Festofilas.Data
                 .WithMany(c => c.ArticleFestivals)
                 .HasForeignKey(pc => pc.ArticleId);
 
+
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.

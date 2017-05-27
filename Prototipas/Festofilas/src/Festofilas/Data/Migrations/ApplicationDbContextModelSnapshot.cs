@@ -100,12 +100,6 @@ namespace Festofilas.Data.Migrations
 
                     b.Property<string>("Webpage");
 
-                    b.Property<double>("TotalScore");
-
-                    b.Property<int>("NumberOfVotes");
-
-                    b.Property<string>("WidgetCode");
-
                     b.HasKey("Id");
 
                     b.ToTable("Festivals");
