@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
@@ -13,9 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+using Festofilas.Models;
 
 namespace Festofilas.Controllers
 {
@@ -271,14 +268,27 @@ namespace Festofilas.Controllers
             return RedirectToAction($"Festival/{item.Id}");
 
         }
-        public IActionResult SubscribeFestival(int id, string email)
+        public IActionResult SubscribeFestival(int festivalId, string userId)
         {
+            ApplicationUser user = null;
+            Festival festival = null;
+            UserFestival userFestival = null;
             if (ModelState.IsValid)
             {
-                var user = _context.Users.FirstOrDefault(x => x.Email == email);
-                //user.SubscribedFestivals.Add(_context.Festivals.FirstOrDefault(x => x.Id == id));
+                user = _context.Users.FirstOrDefault(x => x.UserName == userId);
+                festival = _context.Festivals.FirstOrDefault(x => x.Id == festivalId);
+                userFestival = new UserFestival() { FestivalId = festival.Id, Festival = festival, UserId = user.Id, User = user };
+                if (user.SubscribedFestivals == null)
+                {
+                    user.SubscribedFestivals = new List<UserFestival>();
+                }
+                if (_context.UserFestivals.ToList().Where(x => x.UserId == user.Id && x.FestivalId == festival.Id).Count() == 0)
+                {
+                    user.SubscribedFestivals.Add(userFestival);
+                    _context.SaveChanges();
+                }
             }
-            return Redirect("/Home/Festival/" + id);
+            return Redirect("/Home/Festival/" + festivalId);
 
         }
         public IActionResult Festival(int id)

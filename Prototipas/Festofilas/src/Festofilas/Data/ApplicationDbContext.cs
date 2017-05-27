@@ -18,8 +18,18 @@ namespace Festofilas.Data
         public DbSet<Festival> Festivals { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<UserFestival> UserFestivals { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<UserFestival>().HasKey(x => new { x.FestivalId, x.UserId });
+
+            builder.Entity<UserFestival>()
+                .HasOne(pc => pc.User)
+                .WithMany(p => p.SubscribedFestivals)
+                .HasForeignKey(pc => pc.UserId);
+
+
+
             builder.Entity<ArticleFestival>().HasKey(x => new { x.ArticleId, x.FestivalId });
 
             builder.Entity<ArticleFestival>()

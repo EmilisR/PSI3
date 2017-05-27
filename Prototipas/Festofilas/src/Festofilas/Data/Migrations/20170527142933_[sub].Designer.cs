@@ -8,9 +8,10 @@ using Festofilas.Data;
 namespace Festofilas.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170527142933_[sub]")]
+    partial class sub
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -102,11 +103,17 @@ namespace Festofilas.Data.Migrations
 
                     b.Property<double>("TotalScore");
 
+                    b.Property<int?>("UserFestivalFestivalId");
+
+                    b.Property<string>("UserFestivalUserId");
+
                     b.Property<string>("Webpage");
 
                     b.Property<string>("WidgetCode");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserFestivalFestivalId", "UserFestivalUserId");
 
                     b.ToTable("Festivals");
                 });
@@ -119,11 +126,9 @@ namespace Festofilas.Data.Migrations
 
                     b.HasKey("FestivalId", "UserId");
 
-                    b.HasIndex("FestivalId");
-
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserFestivals");
+                    b.ToTable("UserFestival");
                 });
 
             modelBuilder.Entity("Festofilas.Models.ApplicationUser", b =>
@@ -295,13 +300,15 @@ namespace Festofilas.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("Festofilas.Data.Model.Festival", b =>
+                {
+                    b.HasOne("Festofilas.Data.Model.UserFestival")
+                        .WithMany("Festivals")
+                        .HasForeignKey("UserFestivalFestivalId", "UserFestivalUserId");
+                });
+
             modelBuilder.Entity("Festofilas.Data.Model.UserFestival", b =>
                 {
-                    b.HasOne("Festofilas.Data.Model.Festival", "Festival")
-                        .WithMany()
-                        .HasForeignKey("FestivalId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Festofilas.Models.ApplicationUser", "User")
                         .WithMany("SubscribedFestivals")
                         .HasForeignKey("UserId")

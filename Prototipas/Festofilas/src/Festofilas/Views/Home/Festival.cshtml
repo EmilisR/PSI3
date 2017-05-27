@@ -156,7 +156,7 @@
 }
 @if (User.Identity.IsAuthenticated)
 {
-    <button class="btn btn-default" onclick="window.location ='@Url.Action("SubscribeFestival", "Home", new {id = Model.Id, email = User.Identity.Name})'; ">Prenumeruoti festivalį</button>
+    <button class="btn btn-default" onclick="window.location ='@Url.Action("SubscribeFestival", "Home", new {festivalId = Model.Id, userId = User.Identity.Name})'; ">Prenumeruoti festivalį</button>
 }
 
 
