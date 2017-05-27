@@ -26,7 +26,11 @@ namespace Festofilas.Controllers
         public IActionResult Index()
         {
             var articles = _context.Articles.Select(x => new ArticleThumbModel() { Image64 = x.Image64, Name = x.Name, Id = x.Id, Summary = x.Summary, SubmissionTime = x.SubmissionTime.Value }).ToList().OrderByDescending(x => x.SubmissionTime).ToList();
-            return View(articles);
+            var festivals = _context.Festivals.ToList();
+            var users = _context.Users.ToList();
+            var userFestivals = _context.UserFestivals.ToList();
+            IndexModel index = new IndexModel() { ArticleThumbModel = articles, SubscribeModel = new SubscribeModel() { Festivals = festivals, Users = users, UserFestivals = userFestivals} };
+            return View(index);
         }
 
         public IActionResult About()
